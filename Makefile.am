@@ -96,7 +96,7 @@ libmaxtouch_la_SOURCES += \
 	src/libmaxtouch/usb/usb_device.c
 AM_CFLAGS += -DHAVE_LIBUSB
 mxt_app_LDFLAGS = -pthread
-mxt_app_LDADD = libmaxtouch.la /usr/lib/aarch64-linux-gnu/libusb-1.0.a -ludev -lrt -lm
+mxt_app_LDADD = libmaxtouch.la /usr/lib/aarch64-linux-gnu/libusb-1.0.a /usr/lib/aarch64-linux-gnu/libudev.a /usr/lib/aarch64-linux-gnu/libcap.a -lrt -lm
 endif
 
 EXTRA_mxt_app_DEPENDENCIES = git-version
