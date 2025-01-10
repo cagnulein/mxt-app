@@ -18,7 +18,6 @@
 Makefile
 Makefile.in
 /missing
-/mxt-app
 /run-unit-tests
 /run-unit-tests.log
 /run-unit-tests.trs

@@ -17,7 +17,13 @@ m4_ifdef([AM_PROG_AR], [AM_PROG_AR]) dnl Workaround for earlier Automake
 LT_INIT
 
 # Check for usb support
-AC_CHECK_LIB([usb-1.0], [libusb_init], [libusb=true])
+AC_CHECK_PROGS([PKG_CONFIG], [pkg-config])
+PKG_CHECK_MODULES([LIBUSB], [libusb-1.0 >= 1.0])
+ AS_IF([test "x$with_libusb" != xno],
+   [AC_CHECK_LIB([usb-1.0], [libusb_init],
+     [libusb=true],
+     [AC_MSG_ERROR([unable to find libusb-1.0])],
+     [-lpthread])])
 AM_CONDITIONAL([HAVE_LIBUSB], [test x$libusb = xtrue])
 
 # Handle debug/release build
